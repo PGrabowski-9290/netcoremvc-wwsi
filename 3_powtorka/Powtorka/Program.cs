@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Powtorka
 {
@@ -90,7 +91,68 @@ namespace Powtorka
             int point = 57;
             exam = point;
             Console.WriteLine(PetleiInstr_Zad5(point));
-            //Console.WriteLine("\r\n\r\n*****Kolekcje******\r\n//ZAD 5:dodatkowe");
+
+            Console.WriteLine("\r\n\r\n***** Kolekcje ******\r\n//ZAD 1");
+            string[] colors = new String[4];
+            colors[0] = "czerwony";
+            colors[1] = "niebieski";
+            colors[2] = "fioletowy";
+            colors[3] = "pomaranczowy";
+
+            Console.WriteLine("Mój pierwszy kolor to: " + colors[0]);
+            Console.WriteLine("Mój ostatni kolor to: " + colors[3]);
+
+
+            Console.WriteLine("\r\n\r\n//ZAD 2");
+
+            int[] liczby = new int[10];            
+            for(int i = 0; i < liczby.Length; i++)
+            {
+                liczby[i] = new Random().Next(1, 100);
+            }
+
+            Console.WriteLine("Petal FOR:");
+            for (int i = 0; i < liczby.Length; i++)
+            {
+                Console.WriteLine("Liczba: {0}", liczby[i]);
+            }
+
+            Console.WriteLine("Petal FOREACH:");
+            foreach (int i in liczby)
+            {
+                Console.WriteLine("Liczba: {0}", i);
+            }
+
+            Console.WriteLine("Petal WHILE:");
+            int i1 = 0;
+            while(i1 < liczby.Length)
+            {
+                Console.WriteLine("Liczba: {0}", liczby[i1]);
+                i1++;
+            }
+
+            Console.WriteLine("\r\n\r\n//ZAD 3");
+            List<String> fruits = new List<String>();
+            fruits.Add("Pomidor");
+            fruits.Add("Jabłko");
+            fruits.Add("Marchewka");
+            fruits.Add("Kiwi");
+
+            Console.WriteLine("Lista owocow:");
+            foreach(string fruit in fruits)
+            {
+                Console.WriteLine("{0}, ", fruit);
+            }
+
+            Console.WriteLine("Lista owocow po usunieciu pierwszego i ostatniego elementu: \r\n");
+            fruits.Remove("Pomidor");
+            fruits.RemoveAt(fruits.Count - 1);
+            foreach (string fruit in fruits)
+            {
+                Console.Write("{0}, ", fruit);
+            }
+            Console.WriteLine("\r\n\r\n koniec warsztat w nowym projekcie");
+
         }
         public static string PetleiInstr_Zad5(int exam)
         {
