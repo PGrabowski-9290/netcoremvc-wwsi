@@ -12,25 +12,55 @@ namespace Powtorka
             Console.WriteLine("Podaj swoje imię: ");
             var name = Console.ReadLine();
             Console.WriteLine(name);
-            //Zad3
             Console.WriteLine("//Zad 3");
             int result = 5 + 9;
             Console.WriteLine(result);
-            //zad 4
-            Console.WriteLine("//Zad 4");
+
+            Console.WriteLine("\r\n\r\n\r\n==OPERATORY==\r\n//Zad 1");
             int number = 2;
             float money = 2.1232137F;
             string text = "troche tekstu";
             bool isLogged = true;
             char myChar = 'a';
             decimal price = (decimal)7.9999999999999;
-            
+
             Console.WriteLine("Zmienna number: " + number);
             Console.WriteLine("Zmienna money: " + money);
             Console.WriteLine("Zmienna text: " + text);
             Console.WriteLine("Zmienna isLogged: " + isLogged);
             Console.WriteLine("Zmienna myChar: " + myChar);
             Console.WriteLine("Zmienna price: " + price);
+
+            Console.WriteLine("//Zad 2");
+            string myAge = "Age: ";
+            int wifeAge = 18;
+            string result2 = myAge + wifeAge;
+            Console.WriteLine(result2);
+
+            Console.WriteLine("\r\n//Zad 3");
+            bool isTrue = true;
+            bool isFalse = false;
+            bool isReallyTrue = true;
+            bool and = isTrue && isFalse;
+            bool or = isTrue || isReallyTrue;
+            bool negative = !isFalse;
+
+            Console.WriteLine("Zmienna AND: {0}\r\nZmienna OR: {1}\r\nZmienna NEGATIVE: {2}",and,or,negative);
+
+
+            //Zad4
+            Console.WriteLine("//Zad 4");
+            int a = 5;
+            int b = 12;
+
+            int add = a + b;
+            int sub = a - b;
+            int div = a / b;
+            int mul = a * b;
+            int mod = a % b;
+
+            Console.WriteLine("Zmienne:\r\nadd: {0} | sub: {1} | div: {2} | mul: {3} | mod: {4}", add, sub, div, mul, mod);
+
 
             Console.WriteLine("//Zad 5");
             string a, b, c;
