@@ -27,8 +27,9 @@ namespace Library.ConsoleApp
                 Console.WriteLine("Access Denied");
                 Environment.Exit(0);
             }
-
-            BooksService bookService = new BooksService();
+            OrderRepository orderRepository = new OrderRepository();
+            OrderService orderService = new OrderService(orderRepository);
+            BooksService bookService = new BooksService(repository);
             string command = "";
             do
             {
@@ -59,11 +60,13 @@ namespace Library.ConsoleApp
                         break;
                     case "dodaj zamowienie":
                         Console.WriteLine("Proba dodania nowego zamowienia");
+                        orderService.PlaceOrder();
                         Console.WriteLine("Press AnyKey...");
                         Console.ReadKey();
                         break;
                     case "lista zamowien":
-                        Console.WriteLine("Proba wypisania wszystkich zamowien");
+                        Console.WriteLine("\nProba wypisania wszystkich zamowien\n\n");
+                        orderService.ListAll();
                         Console.WriteLine("Press AnyKey...");
                         Console.ReadKey();
                         break;

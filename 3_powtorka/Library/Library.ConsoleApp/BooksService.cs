@@ -1,4 +1,5 @@
 ﻿using Library.Domain;
+using Library.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,13 @@ using System.Threading.Tasks;
 
 namespace Library.ConsoleApp
 {
-    internal class BooksService
+    public class BooksService
     {
+        private BooksRepository _repository;
+        public BooksService(BooksRepository booksRepository)
+        {
+            _repository = booksRepository;
+        }
         public void AddBook()
         {
             Book book = new Book();
@@ -24,7 +30,9 @@ namespace Library.ConsoleApp
             Console.WriteLine("Ilosc magazynowa");
             book.ProductAvailable = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Cena");
-            book.Price = Convert.ToDecimal(Console.ReadLine());
+            book.Price = Convert.ToDecimal(Console.ReadLine().Replace('.',','));
+            
+            _repository.Insert(book);
         }
 
         public void RemoveBook()
@@ -32,12 +40,17 @@ namespace Library.ConsoleApp
             string bookToRemove = "";
             Console.WriteLine("Podaj tytul ksiazki do usuniecia:");
             bookToRemove = Console.ReadLine();
+            _repository.RemoveByTitle(bookToRemove);
         }
 
         public void ListBooks()
         {
-            Console.WriteLine("Tutaj pojawi sie lista ksiazek");
-
+            Console.WriteLine("\nLista ksiazek\n");
+            var repo = _repository.GetAll();
+            foreach (var book in repo)
+            {
+                Console.WriteLine(book.ToString());
+            }
         }
 
         public void ChangeState()
@@ -48,7 +61,7 @@ namespace Library.ConsoleApp
             title = Console.ReadLine();
             Console.WriteLine("Podaj o ile zmienic stan magazynowy");
             state = Convert.ToInt32(Console.ReadLine());
-
+            _repository.ChangeState(title, state);
         }
     }
 }
