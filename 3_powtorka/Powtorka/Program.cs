@@ -63,11 +63,11 @@ namespace Powtorka
 
 
             Console.WriteLine("//Zad 5");
-            string a, b, c;
-            a = "Ala";
-            b = "Ma";
-            c = "Kota";
-            string result_zad5 = a+b+c;
+            string a_STRING, b_STRING, c_STRING;
+            a_STRING = "Ala";
+            b_STRING = "Ma";
+            c_STRING = "Kota";
+            string result_zad5 = a_STRING+b_STRING+c_STRING;
             Console.WriteLine(result_zad5);
             Console.WriteLine("\r\n\r\n\r\n==INSTRUKCJE STERUJACE I PETLE==\r\n//Zad 1");
             int n1, n2;
