@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FilmDB.Logic;
+using FilmDB.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,9 @@ namespace FilmDB.Controllers
     {
         public IActionResult Index()
         {
+            var manager = new FilmManager();
+            manager.ChangeTitle(10, null);
+            manager.ChangeTitle(12, "Śniegowa piosenka");
             return View();
         }
     }
