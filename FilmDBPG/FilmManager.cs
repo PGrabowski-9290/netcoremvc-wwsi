@@ -11,11 +11,11 @@ namespace FilmDB
     {
         public FilmManager AddFilm(FilmModel filmModel)
         {
-            using(FilmContext context = new FilmContext())
+            using (FilmContext context = new FilmContext())
             {
                 context.Films.Add(filmModel);
                 try
-                {                    
+                {
                     context.SaveChanges();
                 }
                 catch (Exception)
@@ -30,7 +30,7 @@ namespace FilmDB
 
         public FilmManager RemoveFilm(int id)
         {
-            using( FilmContext context = new FilmContext())
+            using (FilmContext context = new FilmContext())
             {
                 try
                 {
@@ -38,7 +38,7 @@ namespace FilmDB
                     _ = context.Films.Remove(delFilm);
                     context.SaveChanges();
                 }
-                catch(Exception)//DbUpdateException
+                catch (Exception)//DbUpdateException
                 {
                     //Error message TODO
                 }
@@ -48,14 +48,14 @@ namespace FilmDB
 
         public FilmManager UpdateFilm(FilmModel filmModel)
         {
-            using(FilmContext context = new FilmContext())
+            using (FilmContext context = new FilmContext())
             {
                 try
                 {
                     context.Update(filmModel);
                     context.SaveChanges();
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     //TODO
                 }

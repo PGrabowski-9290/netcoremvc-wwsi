@@ -50,7 +50,7 @@ namespace FilmDB.Controllers
             }
             catch (Exception)
             {
-                
+
                 return BadRequest();
             }
         }
