@@ -1,9 +1,11 @@
-﻿using FilmDB505.Contexts;
-using FilmDB505.Models;
+﻿using FilmDB.Contexts;
+using FilmDB.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
-namespace FilmDB505.Logic
+namespace FilmDB.Logic
 {
     public class FilmManager
     {
@@ -11,38 +13,38 @@ namespace FilmDB505.Logic
         {
             using (var context = new FilmContext())
             {
-                context.Add(filmModel);
                 try
                 {
+                    context.Films.Add(filmModel);
                     context.SaveChanges();
                 }
-                catch (System.Exception)
+                catch (Exception e)
                 {
                     filmModel.ID = 0;
-                    context.Add(filmModel);
+                    context.Films.Add(filmModel);
                     context.SaveChanges();
                 }
-                
+
             }
+
                 return this;
         }
 
-        public FilmManager RemoveFilm(int id)
+        public void RemoveFilm(int id)
         {
             using (var context = new FilmContext())
             {
-                var film = context.Films.SingleOrDefault(x => x.ID == id);
-                context.Remove(film);
+                var filmToDelete = context.Films.Single(x => x.ID == id);
+                context.Films.Remove(filmToDelete);
                 context.SaveChanges();
-            }
-                return this;
+            } 
         }
 
         public FilmManager UpdateFilm(FilmModel filmModel)
         {
-            using (var context = new FilmContext()) 
+            using (var context = new FilmContext())
             {
-                context.Update(filmModel);
+                context.Films.Update(filmModel);
                 context.SaveChanges();
             }
                 return this;
@@ -52,13 +54,20 @@ namespace FilmDB505.Logic
         {
             using (var context = new FilmContext())
             {
-                var film = context.Films.Single(x => x.ID == id);
-                film.Title = newTitle;
-                if (string.IsNullOrEmpty(film.Title))
+                var film = this.GetFilm(id);
+                if (film != null)
                 {
-                    film.Title = "Brak Tytułu";
+                    if (String.IsNullOrEmpty(newTitle))
+                    {
+                        film.Title = "Brak Tytułu";
+                    }
+                    else
+                    {
+                        film.Title = newTitle;
+                    }
+                    this.UpdateFilm(film);
                 }
-                this.UpdateFilm(film);
+
             }
                 return this;
         }
@@ -74,11 +83,7 @@ namespace FilmDB505.Logic
 
         public List<FilmModel> GetFilms()
         {
-            using (var context = new FilmContext())
-            {
-                var films = context.Films.ToList<FilmModel>();
-                return films;
-            }
+            return null;
         }
     }
 }
